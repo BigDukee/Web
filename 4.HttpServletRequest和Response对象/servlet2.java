@@ -31,7 +31,7 @@ public class servlet2 extends HttpServlet {
         System.out.println("姓名：" + upwd);
 
         //解决tomcat7及一下版本的GET请求编码，不能随便乱用
-        String name = new String(req.getParameter("uname").getBytes("ISO-8859-1"),"UTF-8")
+        String name = new String(req.getParameter("uname").getBytes("ISO-8859-1"),"UTF-8");
         System.out.println("姓名：" + name);
     }
 }

@@ -1,3 +1,22 @@
+# HttpServerletRequest对象和HttpServletResponse对象
+
+- [HttpServletRequest对象](#httpservletrequest--)
+  * [接受请求](#----)
+    + [常用方法](#----)
+    + [获取请求参数](#------)
+  * [请求乱码问题](#------)
+  * [请求转发](#----)
+  * [request作用域](#request---)
+- [HttpServletResponse对象](#httpservletresponse--)
+  * [响应数据](#----)
+  * [响应乱码问题](#------)
+  * [重定向](#---)
+  * [请求转发与重定向的区别](#-----------)
+
+------
+
+
+
 # HttpServletRequest对象
 
 HttpServletRequest对象：主要作用是用来接收客户端发送过来的请求信息，例如：请求的参数，发送的头信息等都属于客户端发来的信息，service()方法中形参接受的是HttpServletRequst接口的实例化对象，表示该对象主要应用在HTTP协议上，该对象是由Tomcat封装好传递过来。
@@ -311,3 +330,114 @@ protected void service(HttpServletRequest req, HttpServletResponse resp) throws 
     //输出数据
     out.write("<h2>你好<h2>".getBytes("UTF-8"));
 ```
+
+
+
+------
+
+
+
+## 重定向
+
+重定向是**一种服务器指导，客户端行为**。客户端发出第一个请求，被服务器接受处理后，服务器会进行响应，在相应的同时，服务器会给客户端一个新的地址（下次请求的地址response.sendRedirect(url);），当客户端接收到响应后，会立刻马上自动根据服务器给的新地址发起第二个请求，服务器接收到请求并作出相应，重定向完成。
+
+重定向当中有两个请求存在，并且属于客户端行为。
+
+通过浏览器可以观察出来第一次请求获得的响应码为**302**，并包含一个location头信息。并且地址栏最终看到的地址和第一次请求的，地址栏已经发生了变化。
+
+```java
+/**
+ * 重定向
+ * 服务端指导，客户端行为
+ * 存在两次请求,两次！！！数据无法共享
+ * 地址栏会发生改变
+ * request对象不共享
+ */
+@WebServlet("/ser10")
+public class servlet10 extends HttpServlet {
+    @Override
+    protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        System.out.println("servlet10");
+
+        //重定向跳转到ser11
+        resp.sendRedirect("ser11");
+
+        //接收参数
+        String uname = req.getParameter("uname");
+        System.out.println("servlet10" + uname);
+```
+
+------
+
+
+
+```java
+/**
+ * 重定向
+ */
+@WebServlet("/ser11")
+public class servlet11 extends HttpServlet {
+    @Override
+    protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        System.out.println("servlet11");
+
+        //接收参数
+        String uname = req.getParameter("uname");
+        System.out.println("servlet11" + uname);
+```
+
+
+
+------
+
+
+
+## 请求转发与重定向的区别
+
+| 请求转发（req.getRequestDispatcher().forward()） |  重定向（resp.sendRedirect()）  |
+| :----------------------------------------------: | :-----------------------------: |
+|         一次请求，数据在request域中共享          | 两次请求，request域中数据不共享 |
+|                   服务器端行为                   |           客户端行为            |
+|                 地址栏不发生变化                 |         地址栏发生变化          |
+|               绝对地址定位到站点后               |      绝对地址可写到http://      |
+
+
+
+```Java
+/**
+ * 重定向与请求转发的区别
+ * 请求转发的地址栏不会发生改变，重定向的地址栏会发生改变
+ * 请求转发只有一次请求，重定向有两次请求
+ * 请求转发是request对象可共享，重定向时request对象不可共享
+ * 请求转发是服务端行为，重定向是客户端行为
+ * 请求转发时的地址只能时当前站点下的资源（当前项目），重定向时地址可以是任何地址
+ */
+@WebServlet("/ser12")
+public class servlet12 extends HttpServlet {
+    @Override
+    protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        System.out.println("servlet12");
+
+        //接收参数
+        String uname = req.getParameter("uname");
+        System.out.println("servlet11" + uname);
+
+        //设置request域对象
+        req.setAttribute("upwd","1234");
+
+//        //请求转发
+//        req.getRequestDispatcher("index1.jsp").forward(req, resp);
+
+//        //重定向
+//        resp.sendRedirect("index1.jsp");
+
+//        //重定向跳转到百度
+//        resp.sendRedirect("http://www.baidu.com");
+
+//        //请求转发到百度   (404)
+//        req.getRequestDispatcher("http://www.baidu.com").forward(req,resp);
+```
+
