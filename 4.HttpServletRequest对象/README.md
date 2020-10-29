@@ -138,3 +138,176 @@ public class servlet2 extends HttpServlet {
 
 ```
 
+
+
+------
+
+## 请求转发
+
+请求转发，是一种服务器的行为，当客户端请求到达后，服务器进行转发，此时会将请求对象进行保存，地址栏中的URL地址不会改变，得到响应后，服务端再将响应发送给客户端，从始至终只有一个请求发出。
+
+```java
+req.getRequestDispatcher(url).forward(req, resp);
+```
+
+```java
+/**
+ * 请求转发跳转
+ * req.getRequestDispatcher(url).forward(req, resp);
+ * 可以让请求从服务器端跳转到客户端（或跳转到指定Servlet）
+ *
+ * 特点：
+ * 1.服务端行为
+ * 2.地址栏不发生改变
+ * 3.从始至终只有一个请求
+ * 4.request数据可以共享
+ */
+@WebServlet("/ser3")
+public class Servlet3 extends HttpServlet {
+
+    @Override
+    protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        //接受客户端请求的参数
+        String uname = req.getParameter("uname");
+        System.out.println("Servlet3 uname : " + uname);
+
+        //请求转发跳转到Servlet4
+//        req.getRequestDispatcher("ser4").forward(req, resp);    //相当于传到ser4中的req，resp
+
+        //请求转发跳转到jsp页面
+//        req.getRequestDispatcher("login.jsp").forward(req, resp);
+
+        //请求转发跳转到html页面
+        req.getRequestDispatcher("login.html").forward(req, resp);
+    }
+```
+
+
+
+------
+
+## request作用域
+
+通过该对象可以在一个请求中传递数据，作用范围：在一次请求中有效，即服务器跳转有效（只会在请求转发中有效）。
+
+request域对象中的数据在一次请求中有效，则经过请求转发，request域中的数据依然存在，则在请求转发的过程中可以通过request来传输/共享数据
+
+```java
+<%
+    // 获取域对象
+    // 获取对象内容
+    // 获取对象内容
+    String name = (String) request.getAttribute("name");
+    System.out.println("name: " + name);
+    Integer age = (Integer) request.getAttribute("age");
+    System.out.println("age: " + age);
+    List<String> list = (List<String>) request.getAttribute("list");
+    System.out.println(list.get(0));
+%>
+```
+
+
+
+------
+
+
+
+# HttpServletResponse对象
+
+web服务器收到客户端的http请求，会针对每一次请求，分别创建一个用于**代表请求**的request对象和**代表响应**的response对象。
+
+request和response对象代表请求和响应：获取客户端数据，需要通过request对象；**向客户输出数据，需要通过response对象**。
+
+HttpServletResponse的主要功能用于服务器和客户端的请求进行响应，将web服务器处理后的结果返回给客户端。service()方法中的形参接受的是HttpServletResponse接口的实例化对象，这个对象中封装了向客户端发送数据，发送响应头，发送响应状态码的方法。
+
+------
+
+## 响应数据
+
+```java
+/**
+ * 响应数据
+ * getWrite（） 字符输出流（输出字符串）
+ * getOutputStream（）  字节输出流（输出一切数据）
+ * 两个不能同时使用 
+ */
+@WebServlet("/ser7")
+public class servlet7 extends HttpServlet {
+    @Override
+    protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+
+//        //getWrite（）
+//        //获取字符输出流
+//        PrintWriter writer = resp.getWriter();
+//        //输出数据
+//        writer.write("hello world");
+
+        //getOutputStream()
+        ServletOutputStream out = resp.getOutputStream();
+        //输出数据
+        out.write(("hello world".getBytes());
+    }
+```
+
+
+
+## 响应乱码问题
+
+解决方案一：
+
+```Java
+ * 第一步，设置服务端的编码格式
+ * resp.setContentType("UTF-8");
+ * 第二部，设置客户端的编码格式
+ * resp.setHeader("content-type","text/html;charset=UTF-8")
+ *
+ * 以上，需要设置客户端和服务端的编码都支持中文，并保持一致
+```
+
+解决方案二：
+
+```java
+* 同时设置客户端和服务端的编码格式
+* resp.setContentType("text/html;charset=UTF-8")
+```
+
+------
+
+字节流响应数据，响应中文必定会乱码
+
+```Java
+protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+//        //设置服务端的编码格式
+//        resp.setCharacterEncoding("UTF-8");
+//        //设置客户端的编码格式和响应的MIME类型
+//        resp.setHeader("content-type","text/html;charset=UTF-8");
+
+        //同时设置客户端和服务端的编码格式
+        resp.setContentType("text/html;charset=UTF-8");
+
+        //getWrite（）
+        //获取字符输出流
+        PrintWriter writer = resp.getWriter();
+        //输出数据
+        writer.write("<h2>你好</h2>");
+```
+
+------
+
+
+
+字节流响应数据，解决方案同字符流一样
+
+```Java
+protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+    //同时设置客户端和服务端的编码格式
+    resp.setContentType("text/html;charset=UTF-8");
+
+    //getOutputStream()
+    ServletOutputStream out = resp.getOutputStream();
+    //输出数据
+    out.write("<h2>你好<h2>".getBytes("UTF-8"));
+```
