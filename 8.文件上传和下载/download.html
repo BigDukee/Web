@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>文件下载</title>
+</head>
+<body>
+<!--
+    超链接下载
+        当使用超链接（a标签）时，如果遇到浏览器能够识别的资源，则会显示内容；如果遇到浏览器不能识别的资源，则会进行下载。
+    download属性
+        通过download属性规定浏览器进行下载。download属性可以不写任何信息，会自动使用默认文件名。如果设置了download属性的
+        值，则使用设置的值作为文件名。
+-->
+<!--浏览器能够识别的资源-->
+<a href="download/新建文本文档.txt">文本文件</a>
+<a href="download/123.png">图片文件</a>
+<!--浏览器不能识别的资源-->
+<a href="download/plaidctf-2013-master.zip">压缩文件</a>
+<hr>
+<a href="download/新建文本文档.txt" download="">文本文件</a>
+<a href="download/123.png" download="这是一张图片.png">图片文件</a>
+
+<hr>
+<form action="downloadServlet">
+    文件名：<input type="text" name="filename" placeholder="请输入要下载的文件名">
+    <button>下载</button>
+</form>
+
+</body>
+</html>
