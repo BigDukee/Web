@@ -355,3 +355,381 @@ application：在整个服务器上保存
 <a href="jsp5.1.jsp">跳转</a>
 ```
 
+
+
+------
+
+# 简易版用户登录实现
+
+## 前端
+
+login
+
+```jsp
+<head>
+    <title>登录</title>
+</head>
+<body>
+<form action="loginServlet" method="post">
+    姓名：<input type="text" name="uname"> <br>
+    密码：<input type="password" name="upwd"> <br>
+    <button>登录</button>
+    <%--获取后台设置在作用域中的数据，并显示--%>
+    <span style="color:red;font-size:12px"><%=request.getAttribute("msg")%></span>
+</form>
+
+</body>
+```
+
+
+
+index
+
+```jsp
+<head>
+    <title>欢迎登陆</title>
+</head>
+<body>
+    <h2>欢迎<%=session.getAttribute("uname")%>登录！</h2>
+</body>
+```
+
+
+
+## 后端
+
+```Java
+@WebServlet("/loginServlet")
+public class loginServlet extends HttpServlet {
+    @Override
+    protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        //设置客户端的编码格式
+        req.setCharacterEncoding("UTF-8");
+
+        //接受客户端传递的参数
+        String uname = req.getParameter("uname");
+        String upwd = req.getParameter("upwd");
+
+        //判断参数是否为空
+        if (uname == null || "".equals(uname.trim())){
+            //提示用户信息
+            req.setAttribute("msg","用户姓名不能为空！");
+            //请求转发跳转到login.jsp
+            req.getRequestDispatcher("login.jsp").forward(req, resp);
+            return;
+        }
+        if (upwd == null || "".equals(upwd.trim())){
+            //提示用户信息
+            req.setAttribute("msg","用户密码不能为空！");
+            //请求转发跳转到login.jsp
+            req.getRequestDispatcher("login.jsp").forward(req, resp);
+            return;
+        }
+
+        //判断账号密码是否正确    uname=admin upwd=admin
+        if (!"admin".equals(uname) || !"admin".equals(upwd)){
+            //提示用户信息
+            req.setAttribute("msg","登陆失败！");
+            //请求转发跳转到login.jsp
+            req.getRequestDispatcher("login.jsp").forward(req, resp);
+            return;
+        }
+
+        //登录成功
+        //设置登录信息到session作用域
+        req.getSession().setAttribute("uname",uname);
+        //跳转到index.jsp
+        resp.sendRedirect("index.jsp");
+
+    }
+}
+```
+
+
+
+
+
+------
+
+# EL表达式的使用
+
+## EL表达式的语法
+
+EL(Expression Language)是为了使JSP写起来更加简单。表达式语言的灵感来自于ECMAScript和XPath表达式语言，它提供了在JSP简化表达式的方法，让JSP的代码更加简化。
+
+EL表达式一般操作的都是**域对象中的数据**，操作不了局部变量。
+
+域对象的概念在JSP中一共有四个：pageContext, request, session, application；范围依次是，本页面，一次请求，一次会话，整个应用程序。
+
+当需要指定从某个特定的域对象中查找数据时可以使用四个域对象对应的空间对象，分别是：pageScope, requestScope, sessionScope, applicationScope.
+
+而EL默认的查找方式为从小到大查找，找到即可。当域对象全找完了还没有找到则返回空字符串""。
+
+
+
+```jsp
+<%--
+    EL表达式
+    作用：
+        简化JSP代码
+        格式：
+            ${域对象的名称}
+        操作对象：
+            EL表达式一般操作的是域对象，不能操作局部变量
+        操作范围：
+            page范围
+                在当期页面
+            request范围
+                在一次请求
+            session范围
+                在一次会话
+            application范围
+                在整个应用程序
+        1.如果EL表达式获取域对象的值为空，默认显示空字符串
+        2.EL表达式默认从小到大范围去找，找到为止，如果四个范围都未找到，则显示空字符串
+        查找数据可以使用四个域对象对应的控件对象，分别是：
+        pageScope, requestScope, sessionScope, applicationScope
+
+--%>
+```
+
+
+
+```jsp
+<%--设置数据--%>
+    <%
+        pageContext.setAttribute("uname","zhangsan1");
+        request.setAttribute("uname","zhangsan2");
+        session.setAttribute("uname","zhangsan3");
+        application.setAttribute("uname","zhangsan4");
+
+        //定于局部变量
+        String str = "hello";
+    %>
+<%--获取数据--%>
+    获取局部变量：${str} <br>
+    获取域对象：${uname}
+    获取指定范围的域对象：<br>
+    &nbsp;&nbsp;page范围：${pageScope.uname}<br>
+    &nbsp;&nbsp;page范围：${requestScope.uname}<br>
+    &nbsp;&nbsp;page范围：${sessionScope.uname}<br>
+    &nbsp;&nbsp;page范围：${applicationScope.uname}<br>
+
+
+```
+
+
+
+------
+
+
+
+## EL表达式的使用
+
+### 获取数据
+
+设置域对象中的数据
+
+```jsp
+<%
+    pageContext.setAttribute("uname","zhangsan1");
+    request.setAttribute("uname","zhangsan2");
+    session.setAttribute("uname","zhangsan3");
+    application.setAttribute("uname","zhangsan4");
+%>
+```
+
+
+
+获取域对象的值
+
+```jsp
+${uname}
+```
+
+
+
+获取指定域对象的值
+
+```jsp
+&nbsp;&nbsp;page范围：${pageScope.uname}<br>
+&nbsp;&nbsp;page范围：${requestScope.uname}<br>
+&nbsp;&nbsp;page范围：${sessionScope.uname}<br>
+&nbsp;&nbsp;page范围：${applicationScope.uname}<br>
+```
+
+
+
+获取List
+
+```jsp
+List<String> list = new ArrayList<String>();
+list.add("aaa");
+list.add("bbb");
+list.add("ccc");
+request.setAttribute("list1", list);
+```
+
+
+
+获取Map
+
+```jsp
+Map map = new HashMap();
+map.put("aaa","111");
+map.put("bbb",222);
+map.put("ccc",333);
+request.setAttribute("map1",map);
+```
+
+
+
+获取JavaBean对象
+
+```jsp
+//JavaBean对象
+User_JavaBean user = new User_JavaBean();
+user.setUserId(1);
+user.setUname("zhangsan");
+user.setUpwd("123");
+request.setAttribute("user",user);
+```
+
+
+
+------
+
+### empty
+
+```
+empty
+            判断域对象是否为空
+                为空，返回true；
+                不为空，返回false；
+            如果域对象是字符串
+                不存在的域对象：true
+                空字符串：true
+                null：true
+            如果域对象是List：
+                null：ture
+                没有长度的List（size等于0）：true
+            如果域对象是Map：
+                null：true
+                空map对象：true
+            如果域对象是JavaEean：
+                null：true
+                空对象：false
+        判断域对象不为空
+            ${!empty 限域变量名}
+```
+
+
+
+```
+
+```
+
+
+
+### EL运算
+
+```jsp
+<%
+    //字符串
+    request.setAttribute("str1","abc");
+    request.setAttribute("str2","");
+    request.setAttribute("str3",null);
+
+    //List
+    List list1 = new ArrayList<>();
+    List list2 = null;
+    List list3 = new ArrayList<>();
+    list3.add(3);
+    request.setAttribute("list1",list1);
+    request.setAttribute("list2",list2);
+    request.setAttribute("list3",list3);
+
+    //Map
+    Map map1 = null;
+    Map map2 = new HashMap<>();
+    Map map3 = new HashMap<>();
+    map3.put(1,2);
+    request.setAttribute("map1",map1);
+    request.setAttribute("map2",map2);
+    request.setAttribute("map3",map3);
+
+    //JavaBean
+    User_JavaBean user1 = null;
+    User_JavaBean user2 = new User_JavaBean();
+    User_JavaBean user3 = new User_JavaBean();
+    user3.setUserId(1);
+    request.setAttribute("user1",user1);
+    request.setAttribute("user2",user2);
+    request.setAttribute("user3",user3);
+%>
+```
+
+
+
+```jsp
+<div>判断字符串是否存在</div>
+${empty str}<br>
+${empty str1}<br>
+${empty str2}<br>
+${empty str3}<br>
+<hr>
+<div>判断List是否为空</div>
+${empty list1}<br>
+${empty list2}<br>
+${empty list3}<br>
+<hr>
+<div>判断Map是否为空</div>
+${empty map1}<br>
+${empty map2}<br>
+${empty map3}<br>
+<hr>
+<div>判断JavaBean是否为空</div>
+${empty user1}<br>
+${empty user2}<br>
+${empty user3}<br>
+```
+
+
+
+### 等值判断
+
+```jsp
+比较两个值是否相等
+    ==(eq)，返回true或false
+    ${a==b}
+    ${c==d}
+    ${c eq d}
+    ${a==5}
+    ${c=='aa'}
+```
+
+
+
+
+
+### 算数运算
+
+```jsp
+    <%--加减乘除--%>
+${a+b}
+${a/b} 或 ${a div b}
+```
+
+
+
+### 大小比较
+
+```jsp
+    <%--大小比较--%>
+${a>b}
+${a+1>10}
+${a+b>=10}
+${a>b && b>5}
+${a+b>10 || a-b>5}
+```
+
