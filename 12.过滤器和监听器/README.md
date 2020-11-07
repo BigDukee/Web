@@ -232,3 +232,115 @@ public class LoginAccessFilter implements Filter {
 
 ------
 
+## 监听器
+
+web监听器是Servlet中一种特殊的类，能帮助开发者监听web中的特定事件，比如**ServletContext，HttpSession，ServletRequest**的创建和销毁（生命周期）；变量的创建，销毁和修改等。可以在某种动作前后增加处理，实现监控。例如可以用来统计在线人数等。
+
+```java
+@WebListener
+public class Listener1 implements HttpSessionListener {
+    /**
+     * 当session对象被创建时执行
+     * @param se
+     */
+    @Override
+    public void sessionCreated(HttpSessionEvent se) {
+        System.out.println("session对象被创建");
+    }
+
+    /**
+     * 当session对象被销毁时执行
+     * @param se
+     */
+    @Override
+    public void sessionDestroyed(HttpSessionEvent se) {
+        System.out.println("session被销毁了");
+    }
+}
+```
+
+
+
+```java
+/**
+ * 在线人数统计
+ *  当有新的Session对象创建时，人数+1
+ *  当有session对象销毁时，人数-1
+ */
+@WebListener
+public class OnlineListener implements HttpSessionListener {
+
+    //定义在线人数
+    private Integer onlineNumber = 0;
+
+    /**
+     * 当有新的Session对象创建时，人数+1
+     * @param se
+     */
+    @Override
+    public void sessionCreated(HttpSessionEvent se) {
+        //人数+1
+        onlineNumber++;
+//        //将人数设置到session作用域中
+//        se.getSession().setAttribute("onlineNumber",onlineNumber);
+
+        //将人数设置到servletContext作用域中
+        se.getSession().getServletContext().setAttribute("onlineNumber",onlineNumber);
+    }
+
+    /**
+     * 当有session对象销毁时，人数-1
+     * @param se
+     */
+    @Override
+    public void sessionDestroyed(HttpSessionEvent se) {
+        //人数-1
+        onlineNumber--;
+        //将人数设置到servletContext作用域中
+        se.getSession().getServletContext().setAttribute("onlineNumber",onlineNumber);
+    }
+}
+```
+
+
+
+```java
+@WebServlet("/online")
+public class OnlineServlet extends HttpServlet {
+    @Override
+    protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        //创建session对象
+        HttpSession session = req.getSession();
+
+
+        //获取参数值 key
+        String key = req.getParameter("key");
+        //判断参数是否为空，如果不为空，则表示做退出操作
+        if (key != null && "logout".equals(key)) {
+            //销毁session对象
+            session.invalidate();
+            return;
+        }
+
+
+        /**
+         * 登录操作
+         */
+
+        //得到当前作用域中的在线人数
+        Integer onlineNumber = (Integer) session.getServletContext().getAttribute("onlineNumber");
+
+        //设置响应类型及编码
+        resp.setContentType("text/html;charset=UTF-8");
+
+        //输出人数
+        resp.getWriter().write("<h2>当前在线人数：" + onlineNumber + "</h2> <a href='online?key=logout'>退出</a>");
+    }
+}
+```
+
+
+
+------
+
