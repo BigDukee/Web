@@ -158,7 +158,7 @@ Maven 下载地址：http://maven.apache.org/download.cgi
 
 ### 创建项目
 
-![image-20201108212657087](https://github.com/BigDukee/Web/tree/main/img/image-20201108212657087.png)
+![image-20201108212657087](../img/image-20201108212657087.png)
 
 
 
