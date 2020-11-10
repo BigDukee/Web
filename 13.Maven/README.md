@@ -350,3 +350,78 @@ Maven 下载地址：http://maven.apache.org/download.cgi
 
 ![image-20201108225124086](C:\Users\BigDuke\AppData\Roaming\Typora\typora-user-images\image-20201108225124086.png)
 
+
+
+
+
+## maven的打包操作
+
+### 建立目录结构
+
+![image-20201110151127953](README.assets/image-20201110151127953.png)
+
+### 在pom.xml中添加配置文件
+
+```xml
+<profiles>
+  <profile>
+    <!-- 本地开发环境 -->
+    <id>dev</id>
+    <properties>
+      <profiles.active>dev</profiles.active>
+    </properties>
+    <activation>
+      <activeByDefault>true</activeByDefault>
+    </activation>
+  </profile>
+  <profile>
+    <!-- 测试环境 -->
+    <id>test</id>
+    <properties>
+      <profiles.active>test</profiles.active>
+    </properties>
+  </profile>
+  <profile>
+    <!-- 生产环境 -->
+    <id>product</id>
+    <properties>
+      <profiles.active>pro</profiles.active>
+    </properties>
+  </profile>
+</profiles>
+```
+
+
+
+### 设置资源文件配置
+
+```xml
+<!--对项目资源文件的配置放在build中-->
+<resources>
+  <resource>
+    <directory>src/main/resources/${env}</directory>
+  </resource>
+  <resource>
+    <directory>src/main/java</directory>
+    <includes>
+      <include>**/*.xml</include>
+      <include>**/*.properties</include>
+      <include>**/*.tld</include>
+    </includes>
+    <filtering>false</filtering>
+  </resource>
+</resources>
+```
+
+
+
+### 执行打包操作
+
+![image-20201110152449666](README.assets/image-20201110152449666.png)
+
+![image-20201110153755537](README.assets/image-20201110153755537.png)
+
+![image-20201110153846598](README.assets/image-20201110153846598.png)
+
+![image-20201110153926812](README.assets/image-20201110153926812.png)
+

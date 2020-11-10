@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="b239bae2-285a-4c56-a0c7-5f96f2adef29" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="D:/program file/apache-maven-3.6.3" />
+        <option name="userSettingsFile" value="D:\program file\apache-maven-3.6.3\conf\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="1k5XiJXvMnlsDfVwUhA7lTbp7UB" />
+  <component name="ProjectViewState">
+    <option name="autoscrollFromSource" value="true" />
+    <option name="autoscrollToSource" value="true" />
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/test" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="settings.editor.selected.configurable" value="MavenSettings" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\java\java练习\maven_package\src\main\resources\test" />
+      <recent name="D:\java\java练习\maven_package\src\main\resources\product" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Maven.package_dev">
+    <configuration name="package" type="MavenRunConfiguration" factoryName="Maven">
+      <MavenSettings>
+        <option name="myGeneralSettings" />
+        <option name="myRunnerSettings" />
+        <option name="myRunnerParameters">
+          <MavenRunnerParameters>
+            <option name="profiles">
+              <set />
+            </option>
+            <option name="goals">
+              <list>
+                <option value="package" />
+              </list>
+            </option>
+            <option name="pomFileName" />
+            <option name="profilesMap">
+              <map />
+            </option>
+            <option name="resolveToWorkspace" value="false" />
+            <option name="workingDirPath" value="$PROJECT_DIR$" />
+          </MavenRunnerParameters>
+        </option>
+      </MavenSettings>
+      <method v="2" />
+    </configuration>
+    <configuration name="package_dev" type="MavenRunConfiguration" factoryName="Maven">
+      <MavenSettings>
+        <option name="myGeneralSettings" />
+        <option name="myRunnerSettings" />
+        <option name="myRunnerParameters">
+          <MavenRunnerParameters>
+            <option name="profiles">
+              <set />
+            </option>
+            <option name="goals">
+              <list>
+                <option value="clean" />
+                <option value="compile" />
+                <option value="package" />
+                <option value="-Pdev" />
+                <option value="-Dmaven.test.skip=true" />
+              </list>
+            </option>
+            <option name="pomFileName" />
+            <option name="profilesMap">
+              <map />
+            </option>
+            <option name="resolveToWorkspace" value="false" />
+            <option name="workingDirPath" value="$PROJECT_DIR$" />
+          </MavenRunnerParameters>
+        </option>
+      </MavenSettings>
+      <method v="2" />
+    </configuration>
+    <configuration name="package_product" type="MavenRunConfiguration" factoryName="Maven">
+      <MavenSettings>
+        <option name="myGeneralSettings" />
+        <option name="myRunnerSettings" />
+        <option name="myRunnerParameters">
+          <MavenRunnerParameters>
+            <option name="profiles">
+              <set />
+            </option>
+            <option name="goals">
+              <list>
+                <option value="clean" />
+                <option value="compile" />
+                <option value="package" />
+                <option value="-Pproduct" />
+                <option value="-Dmaven.test.skip=true" />
+              </list>
+            </option>
+            <option name="pomFileName" />
+            <option name="profilesMap">
+              <map />
+            </option>
+            <option name="resolveToWorkspace" value="false" />
+            <option name="workingDirPath" value="$PROJECT_DIR$" />
+          </MavenRunnerParameters>
+        </option>
+      </MavenSettings>
+      <method v="2" />
+    </configuration>
+    <configuration name="package_test" type="MavenRunConfiguration" factoryName="Maven">
+      <MavenSettings>
+        <option name="myGeneralSettings" />
+        <option name="myRunnerSettings" />
+        <option name="myRunnerParameters">
+          <MavenRunnerParameters>
+            <option name="profiles">
+              <set />
+            </option>
+            <option name="goals">
+              <list>
+                <option value="clean" />
+                <option value="compile" />
+                <option value="package" />
+                <option value="-Ptest" />
+                <option value="-Dmaven.test.skip=true" />
+              </list>
+            </option>
+            <option name="pomFileName" />
+            <option name="profilesMap">
+              <map />
+            </option>
+            <option name="resolveToWorkspace" value="false" />
+            <option name="workingDirPath" value="$PROJECT_DIR$" />
+          </MavenRunnerParameters>
+        </option>
+      </MavenSettings>
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Maven.package" />
+      <item itemvalue="Maven.package_dev" />
+      <item itemvalue="Maven.package_test" />
+      <item itemvalue="Maven.package_product" />
+    </list>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b239bae2-285a-4c56-a0c7-5f96f2adef29" name="Default Changelist" comment="" />
+      <created>1604991551461</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1604991551461</updated>
+      <workItem from="1604991554823" duration="3024000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="-1559" y="406" key="#Project_Structure" timestamp="1604991793486">
+      <screen x="-1920" y="335" width="1536" height="824" />
+    </state>
+    <state x="-1559" y="406" key="#Project_Structure/0.40.1920.1040/-1920.335.1536.824@-1920.335.1536.824" timestamp="1604991793486" />
+    <state x="-1697" y="402" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1604993969423">
+      <screen x="-1920" y="335" width="1536" height="824" />
+    </state>
+    <state x="-1697" y="402" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.40.1920.1040/-1920.335.1536.824@-1920.335.1536.824" timestamp="1604993969423" />
+    <state width="1493" height="210" key="GridCell.Tab.0.bottom" timestamp="1604993980413">
+      <screen x="-1920" y="335" width="1536" height="824" />
+    </state>
+    <state width="1493" height="210" key="GridCell.Tab.0.bottom/0.40.1920.1040/-1920.335.1536.824@-1920.335.1536.824" timestamp="1604993980413" />
+    <state width="1493" height="210" key="GridCell.Tab.0.center" timestamp="1604993980413">
+      <screen x="-1920" y="335" width="1536" height="824" />
+    </state>
+    <state width="1493" height="210" key="GridCell.Tab.0.center/0.40.1920.1040/-1920.335.1536.824@-1920.335.1536.824" timestamp="1604993980413" />
+    <state width="1493" height="210" key="GridCell.Tab.0.left" timestamp="1604993980413">
+      <screen x="-1920" y="335" width="1536" height="824" />
+    </state>
+    <state width="1493" height="210" key="GridCell.Tab.0.left/0.40.1920.1040/-1920.335.1536.824@-1920.335.1536.824" timestamp="1604993980413" />
+    <state width="1493" height="210" key="GridCell.Tab.0.right" timestamp="1604993980413">
+      <screen x="-1920" y="335" width="1536" height="824" />
+    </state>
+    <state width="1493" height="210" key="GridCell.Tab.0.right/0.40.1920.1040/-1920.335.1536.824@-1920.335.1536.824" timestamp="1604993980413" />
+    <state x="-1827" y="428" width="1350" height="638" key="dock-window-1" timestamp="1604991853382">
+      <screen x="-1920" y="335" width="1536" height="824" />
+    </state>
+    <state x="-1827" y="428" width="1350" height="638" key="dock-window-1/0.40.1920.1040/-1920.335.1536.824@-1920.335.1536.824" timestamp="1604991853382" />
+    <state x="-1489" y="480" width="672" height="678" key="search.everywhere.popup" timestamp="1604992679926">
+      <screen x="-1920" y="335" width="1536" height="824" />
+    </state>
+    <state x="-1489" y="480" width="672" height="678" key="search.everywhere.popup/0.40.1920.1040/-1920.335.1536.824@-1920.335.1536.824" timestamp="1604992679926" />
+  </component>
+</project>
