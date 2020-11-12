@@ -211,3 +211,68 @@ ${msg}
 ### 访问项目
 
 http://localhost:9090/f1
+
+
+
+# FreeMarker数据类型
+
+ freemarker 模板中的数据类型由如下几种：
+
+布尔型：等价于java中的boolean类型， 不同的是不能直接输出，可以转换成字符串再输出
+
+日期型：等价于java中的Date类型， 不同之处在于不能直接输出，需要转换成字符串再输出
+
+ 数值型：等价于java 中的int, float, double 等数值类型，有三种显示形式：数值型(默认) 、货币型、百分比型
+
+字符串型：等价于java 中的字符串，有很多内置函数
+
+sequence 类型：等价于java中的数组，list，set 等集合类型
+
+hash 类型：等价于java 中的Map 类型
+
+
+
+## 布尔类型
+
+在servlet中设置布尔类型的数据
+
+
+
+获取数据
+
+```F#
+<#--
+    FreeMarker 数据类型
+        布尔类型
+            在freemarker页面中不能直接输出，如果要输出，需要转换成字符串
+            方式一：?c
+            方式二：?string 或   ?string('为true时显示的内容','为false时显示的内容')
+        日期类型
+            在freemark中日期类型不能直接输出，需要转换成日期型或字符串
+            1.年月日   ?date
+            2.时分秒   ?time
+            3.年月日时分秒    ?datetime
+            4.自定义格式     ?string("自定义格式")  y M d H m s
+
+-->
+```
+
+
+
+------
+
+
+
+```F#
+<h5>布尔类型</h5>
+${flag?c} <br>
+${flag?string} <br>
+${flag?string('yes','no')}<br>
+${flag?string('1','0')} <br>
+
+<h5>日期类型</h5>
+${createDate?date} <br>
+${createDate?time} <br>
+${createDate?datetime} <br>
+${createDate?string("yyyy/MM/dd HH:mm:ss")} <br>
+```
