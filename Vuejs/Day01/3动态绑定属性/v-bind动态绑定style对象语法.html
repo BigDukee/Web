@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app">
+  <h2 :style="{fontSize: '80px'}">hello world</h2>
+  <h2 :style="{fontSize: Ssize, color: Ccolor}">hello world!</h2>
+  <h2 :style="getStyle()">hello world!</h2>
+</div>
+<script src="../js/vue.js"></script>
+<script>
+  const app = new Vue({
+    el: '#app',
+    data: {
+      message: 'hello world!',
+      Ssize: '200px',
+      Ccolor: 'red',
+    },
+    methods: {
+      getStyle: function (){
+        return {fontSize: this.Ssize, color: this.Ccolor}
+      }
+    }
+  })
+</script>
+</body>
+</html>

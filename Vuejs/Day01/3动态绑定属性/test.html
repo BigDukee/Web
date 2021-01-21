@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<style>
+  .active{
+      color: palevioletred;
+  }
+</style>
+<body>
+<div id="app">
+  <ul>
+    <li v-for="i in movies" :class="getClass()">{{i}}</li>
+    <button @click="btnClick">点击变色</button>
+  </ul>
+
+</div>
+<script src="../js/vue.js"></script>
+<script>
+  const app = new Vue({
+    el: '#app',
+    data: {
+      movies: ['123','qwe','asd','zxc'],
+      active: "active",
+      isActive: true,
+    },
+    methods: {
+      btnClick: function (){
+        this.isActive=!this.isActive
+      },
+      getClass: function (){
+        return {active: this.isActive}
+      }
+    }
+  })
+</script>
+</body>
+</html>

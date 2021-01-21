@@ -19,7 +19,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eef7f5d-15b9-4b4c-8073-1f4933131888" name="Default Changelist" comment="" />
+    <list default="true" id="3eef7f5d-15b9-4b4c-8073-1f4933131888" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day01/2插值操作/v-bind.html" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -28,20 +31,38 @@
   <component name="ComposerSettings">
     <execution />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="ProjectId" id="1nMaDcZa8Y33UqGPn8kimpCJ4oQ" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Day01/3动态绑定属性" />
     <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\github\JavaWeb\javaWeb-practice\Vuejs\Day01\3动态绑定属性" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\github\JavaWeb\javaWeb-practice\Vuejs\Day01\3动态绑定属性" />
+    </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -52,6 +73,7 @@
       <option name="presentableId" value="Default" />
       <updated>1611202294343</updated>
       <workItem from="1611202295415" duration="37000" />
+      <workItem from="1611202343747" duration="9703000" />
     </task>
     <servers />
   </component>
@@ -68,5 +90,12 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="490" y="364" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1611207034618">
+      <screen x="0" y="40" width="1536" height="824" />
+    </state>
+    <state x="490" y="364" key="vcs.readOnlyHandler.ReadOnlyStatusDialog/0.40.1536.824@0.40.1536.824" timestamp="1611207034618" />
   </component>
 </project>
