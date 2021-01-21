@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="hhh">
+    {{message}}<br>
+    {{wdnmd}}
+</div>
+<script src="../js/vue.js"></script>
+<script>
+    let hhh = new Vue({
+        el: '#hhh', //用于挂在要挂载的元素
+        data: { //定义数据
+            message: 'hello world! ',
+            wdnmd:'呜呜呜'
+        }
+    })
+</script>
+
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script src="../js/vue.js"></script>
+
+<div id="hh">
+    <h2>当前计数：{{counter}}</h2>
+    <button v-on:click="add">+</button>
+    <button @click="sub">-</button>
+</div>
+<script>
+</script>
+<script>
+    const a = new Vue({
+        el: '#hh',
+        data:{
+            counter:0
+        },
+        methods:{
+            add: function (){
+                console.log("counter++");
+                this.counter++;
+            },
+            sub: function (){
+                console.log("counter--");
+                this.counter--;
+            }
+        }
+    })
+</script>
+</body>
+</html>

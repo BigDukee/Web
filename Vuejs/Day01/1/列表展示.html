@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="hhh">
+    <ul>
+        <li v-for="i in movies">{{i}}</li>
+    </ul>
+</div>
+
+<script src="../js/vue.js"></script>
+
+<script>
+    let a = new Vue({
+        el:'#hhh',
+        data:{
+            movies:['qwe','asd','zxc','kkp']
+        }
+    })
+</script>
+
+</body>
+</html>
