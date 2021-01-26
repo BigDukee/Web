@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app">
+  <ul>
+    <li v-for="i in books">{{i}}</li>
+  </ul>
+
+  <!--获取索引值-->
+  <ul>
+    <li v-for="(item, index) in books">{{index+1}}.{{item}}</li>
+  </ul>
+</div>
+<script src="../js/vue.js"></script>
+<script>
+  const app = new Vue({
+    el: '#app',
+    data: {
+      books: ['耗子尾汁', '牛牛', '哈哈哈', '嘻嘻'],
+    }
+  })
+</script>
+</body>
+</html>

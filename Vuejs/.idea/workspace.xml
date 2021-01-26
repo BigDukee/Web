@@ -21,6 +21,7 @@
   <component name="ChangeListManager">
     <list default="true" id="3eef7f5d-15b9-4b4c-8073-1f4933131888" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day01/3动态绑定属性/test.html" beforeDir="false" afterPath="$PROJECT_DIR$/Day01/3动态绑定属性/test.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,15 +53,16 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/Day01/4计算属性" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Day01/6循环便利" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\github\JavaWeb\javaWeb-practice\Vuejs\Day01\4计算属性" />
+    <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\github\JavaWeb\javaWeb-practice\Vuejs\Day01\3动态绑定属性" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\github\JavaWeb\javaWeb-practice\Vuejs\Day01\6循环便利" />
+      <recent name="D:\github\JavaWeb\javaWeb-practice\Vuejs\Day01\4计算属性" />
       <recent name="D:\github\JavaWeb\javaWeb-practice\Vuejs\Day01\3动态绑定属性" />
     </key>
   </component>
@@ -74,7 +76,9 @@
       <updated>1611202294343</updated>
       <workItem from="1611202295415" duration="37000" />
       <workItem from="1611202343747" duration="20079000" />
-      <workItem from="1611374016399" duration="713000" />
+      <workItem from="1611374016399" duration="3220000" />
+      <workItem from="1611490368809" duration="1063000" />
+      <workItem from="1611644324634" duration="8211000" />
     </task>
     <servers />
   </component>
