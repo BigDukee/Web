@@ -34,6 +34,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="HTML File" />
+        <option value="CSS File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -53,6 +55,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/Day01/6循环便利" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -77,7 +80,7 @@
       <workItem from="1611202343747" duration="20079000" />
       <workItem from="1611374016399" duration="3220000" />
       <workItem from="1611490368809" duration="1063000" />
-      <workItem from="1611644324634" duration="8539000" />
+      <workItem from="1611644324634" duration="12872000" />
     </task>
     <servers />
   </component>
