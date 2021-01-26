@@ -12,8 +12,7 @@
 <body>
 <div id="app">
   <ul>
-    <li v-for="i in movies" :class="getClass()">{{i}}</li>
-    <button @click="btnClick">点击变色</button>
+    <li v-for="(item, index) in movies" :class="{active: currentIndex === index}" @click="btnClick(index)">{{index}}.{{item}}</li>
   </ul>
 
 </div>
@@ -24,15 +23,12 @@
     data: {
       movies: ['123','qwe','asd','zxc'],
       active: "active",
-      isActive: true,
+      currentIndex: -1,
     },
     methods: {
-      btnClick: function (){
-        this.isActive=!this.isActive
+      btnClick(index){
+        this.currentIndex = index
       },
-      getClass: function (){
-        return {active: this.isActive}
-      }
     }
   })
 </script>
